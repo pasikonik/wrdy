@@ -1,6 +1,6 @@
 # Wrdy
 
-App to consolidate new words.
+App to consolidate newly discovered words.
 
 ## Environment
 
