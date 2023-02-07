@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@mdi/font": "^7.1.96",
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.13.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "typescript": "^4.9.5",
     "vite": "^4.1.1",
