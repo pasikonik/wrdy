@@ -2,7 +2,7 @@
   "name": "wrdy",
   "private": true,
   "license": "GPL-3.0",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "author": "Michał Olejniczak",
   "scripts": {
