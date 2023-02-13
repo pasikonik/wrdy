@@ -9,9 +9,7 @@ const store = useListStore()
 store.fetchLists()
 
 const lists = computed(() => {
-  return [
-    {}
-  ]
+  return [{}]
 })
 
 async function addNewList() {
@@ -24,7 +22,12 @@ async function addNewList() {
   <!-- <v-layout> -->
   <v-navigation-drawer id="app-drawer" permanent>
     <v-list nav>
-      <v-list-item v-for="list in store.lists" :key="list.id" link>
+      <v-list-item
+        v-for="list in store.lists"
+        :key="list.id"
+        :to="{ name: 'list', params: { id: list.id } }"
+        link
+      >
         <v-list-item-title>
           {{ list.name }}
         </v-list-item-title>
@@ -33,26 +36,31 @@ async function addNewList() {
       <v-divider></v-divider>
 
       <div class="addNew">
-        <v-text-field v-model="newListName" label="new list" density="compact" :single-line="true" hide-details>
+        <v-text-field
+          v-model="newListName"
+          label="new list"
+          density="compact"
+          :single-line="true"
+          hide-details
+        >
         </v-text-field>
-      
-        <v-btn variant="flat" color="success" class="plusButton" @click="addNewList">
+
+        <v-btn
+          variant="flat"
+          color="success"
+          class="plusButton"
+          @click="addNewList"
+        >
           +
         </v-btn>
       </div>
-
-
-
     </v-list>
-
   </v-navigation-drawer>
 
-
-  <v-main style="height: 300px; border: 1px solid black;">
+  <v-main class="content">
     <list></list>
   </v-main>
   <!-- </v-layout> -->
-
 </template>
 
 <style scoped>
@@ -61,15 +69,14 @@ async function addNewList() {
   align-items: center;
 }
 
-.buttonWrapper {
-  margin-inline-start: 0px;
-}
 .plusButton {
   font-size: xx-large;
 }
 
 .content {
+  min-height: 500px;
+  min-width: 400px;
   padding: 30px;
-  border: 1px solid green;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 </style>
