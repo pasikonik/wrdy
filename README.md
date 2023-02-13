@@ -2,7 +2,7 @@
 
 App to consolidate newly discovered words.
 
-## Environment
+## Environment ⚙️
 
 | Tech       | Version |
 | ---------- | ------- |
@@ -11,7 +11,7 @@ App to consolidate newly discovered words.
 | Pnpm       | 7.26.3  |
 | TypeScript | 4.9.5   |
 
-## Roadmap
+## Roadmap 🚩
 
 - [ ] MVP:
   - [ ] basic manage lists
@@ -23,7 +23,7 @@ App to consolidate newly discovered words.
 - [ ] support for multilingual
 - [ ] implement spaced repetition
 
-### API part
+### API 🗄️
 
 Written in Ruby on Rails
 https://github.com/pasikonik/wrdy-api
