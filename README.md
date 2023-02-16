@@ -22,6 +22,7 @@ The application for consolidate newly discovered words.
 - [ ] test coverage
 - [ ] support for multilingual
 - [ ] implement spaced repetition
+- [ ] use NanoID for user model
 
 ### API 🗄️
 
