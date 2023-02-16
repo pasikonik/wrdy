@@ -26,5 +26,4 @@ The application for consolidate newly discovered words.
 
 ### API 🗄️
 
-Written in Ruby on Rails
-https://github.com/pasikonik/wrdy-api
+Written in Ruby on Rails: [Wrdy API](https://github.com/pasikonik/wrdy-api)
