@@ -52,15 +52,9 @@ async function login() {
     </v-card-text>
 
     <v-card-actions>
-      <v-btn 
-        color="success" 
-        variant="outlined" 
-        @click="login"
-        block 
-      >
+      <v-btn color="success" variant="outlined" block @click="login">
         Login
       </v-btn>
     </v-card-actions>
   </v-card>
 </template>
-
