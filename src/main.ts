@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { createORM } from 'pinia-orm'
 import './style.css'
 import App from './App.vue'
 import router from './router'
@@ -8,7 +7,7 @@ import vuetify from '@/plugins/vuetify'
 import { useListStore } from '@/stores/list'
 import { useAuthStore } from '@/stores/auth'
 
-const pinia = createPinia().use(createORM())
+const pinia = createPinia()
 
 const app = createApp(App)
 

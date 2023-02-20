@@ -10,7 +10,6 @@ specifiers:
   eslint-config-prettier: ^8.6.0
   eslint-plugin-vue: ^9.9.0
   pinia: ^2.0.30
-  pinia-orm: ^1.5.1
   prettier: 2.8.4
   typescript: ^4.9.5
   vite: ^4.1.2
@@ -21,7 +20,6 @@ specifiers:
 
 dependencies:
   pinia: 2.0.30_hmuptsblhheur2tugfgucj7gc4
-  pinia-orm: 1.5.1_pinia@2.0.30
   vue: 3.2.47
   vue-router: 4.1.6_vue@3.2.47
   vuetify: 3.1.5_vue@3.2.47
@@ -324,10 +322,6 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
     dev: true
-
-  /@pinia-orm/normalizr/1.1.0:
-    resolution: {integrity: sha512-8OfFZx8Fa+7E+SytnhRVHRFdK1cNlhIOnbEtkoZPC4EHXPss542mYIPHaH9WIt+GL/joyyidS4nOt+70ION3Cg==}
-    dev: false
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
@@ -1326,15 +1320,6 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
     dev: true
-
-  /pinia-orm/1.5.1_pinia@2.0.30:
-    resolution: {integrity: sha512-8kZQA/L+/jaNnLrT420MUvO97UzIHMo/+hB7OIAQXdKllwfh5yCQOs+GZhkTF5KLfjSCYT25BHHKUF6RWS/gWg==}
-    peerDependencies:
-      pinia: ^2.0.29
-    dependencies:
-      '@pinia-orm/normalizr': 1.1.0
-      pinia: 2.0.30_hmuptsblhheur2tugfgucj7gc4
-    dev: false
 
   /pinia/2.0.30_hmuptsblhheur2tugfgucj7gc4:
     resolution: {integrity: sha512-q6DUmxWwe/mQgg+55QQjykpKC+aGeGdaJV3niminl19V08dE+LRTvSEuqi6/NLSGCKHI49KGL6tMNEOssFiMyA==}
