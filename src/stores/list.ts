@@ -1,33 +1,40 @@
 import api from '@/lib/api'
 import { defineStore } from 'pinia'
-
-interface List {
-  id: string
-  name: string
-}
+import List from '@/types/list'
 
 export const useListStore = defineStore('list', {
   state: () => {
     return {
-      lists: [] as List[],
+      all: new Map() as Map<number, List>,
     }
   },
   getters: {
     getListById: (state) => {
-      return (listId: string) => state.lists.find((list) => list.id == listId)
+      return (listId: string) => state.all.get(Number(listId))
     },
   },
   actions: {
     async createList(newListName: string) {
       const newList = await api.post('lists', { name: newListName })
-      this.lists.push(newList)
+      this.all.set(newList.id, newList)
     },
     async fetchLists() {
-      const result = await api.get('lists')
-      this.lists = result
+      if (!this.all.size) return
+
+      const lists = await api.get('lists')
+      for (const list of lists) {
+        this.all.set(list.id, list)
+      }
     },
-    async destroyList(listId) {
+    async fetchList(id: string) {
+      const list = await api.get(`lists/${id}`)
+      this.all.set(list.id, list)
+      return list
+    },
+    async deleteList(listId: string) {
       await api.delete(`lists/${listId}`)
+      this.all.delete(Number(listId))
+      return Promise.resolve()
     },
   },
 })
