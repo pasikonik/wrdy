@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import Navbar from "@/components/Navbar.vue"
-import { useAuthStore } from '@/stores/auth'
-
-useAuthStore().fetchCurrentUser()
+import Navbar from '@/components/Navbar.vue'
 </script>
 
 <template>
@@ -23,5 +20,4 @@ useAuthStore().fetchCurrentUser()
   </v-app>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
