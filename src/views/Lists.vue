@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { useListStore } from '@/stores/list'
 import List from '@/views/List.vue'
 
@@ -8,10 +8,6 @@ const newListName = ref('')
 const store = useListStore()
 store.fetchLists()
 
-const lists = computed(() => {
-  return [{}]
-})
-
 async function addNewList() {
   await store.createList(newListName.value)
   newListName.value = ''
@@ -19,13 +15,12 @@ async function addNewList() {
 </script>
 
 <template>
-  <!-- <v-layout> -->
   <v-navigation-drawer id="app-drawer" permanent>
     <v-list nav>
       <v-list-item
-        v-for="list in store.lists"
-        :key="list.id"
-        :to="{ name: 'list', params: { id: list.id } }"
+        v-for="[id, list] in store.all"
+        :key="id"
+        :to="{ name: 'list', params: { id } }"
         link
       >
         <v-list-item-title>
@@ -60,7 +55,6 @@ async function addNewList() {
   <v-main class="content">
     <list></list>
   </v-main>
-  <!-- </v-layout> -->
 </template>
 
 <style scoped>
@@ -75,7 +69,7 @@ async function addNewList() {
 
 .content {
   min-height: 500px;
-  min-width: 400px;
+  min-width: 700px;
   padding: 30px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
