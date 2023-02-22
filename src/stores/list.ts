@@ -19,12 +19,11 @@ export const useListStore = defineStore('list', {
       this.all.set(newList.id, newList)
     },
     async fetchLists() {
-      if (!this.all.size) return
-
       const lists = await api.get('lists')
       for (const list of lists) {
         this.all.set(list.id, list)
       }
+      return lists
     },
     async fetchList(id: string) {
       const list = await api.get(`lists/${id}`)
