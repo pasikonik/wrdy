@@ -11,13 +11,15 @@ import Navbar from '@/components/Navbar.vue'
     </v-main>
 
     <v-footer>
-      <v-row justify="center" no-gutters>
-        <v-col class="text-center mt-4" cols="12">
-          <strong>Wrdy</strong> — {{ new Date().getFullYear() }}
-        </v-col>
-      </v-row>
+      <div class="footer px-4 py-2 text-center w-100">
+        <strong>Wrdy</strong> — {{ new Date().getFullYear() }}
+      </div>
     </v-footer>
   </v-app>
 </template>
 
-<style scoped></style>
+<style scoped>
+.footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+</style>
