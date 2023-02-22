@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, computed, ref } from 'vue'
+import { onMounted, computed, Ref, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useListStore } from '@/stores/list'
 import List from '@/types/list'
@@ -7,25 +7,27 @@ import List from '@/types/list'
 const newWordOrigin = ref('')
 const newWordTranslation = ref('')
 
+const list: Ref<List | null> = ref(null)
+
 const route = useRoute()
 const router = useRouter()
 const store = useListStore()
-const paramId = route.params.id?.[0]
 
-store.fetchList(paramId)
-let list = store.getListById(paramId)
-
-// onMounted(() => {
-
-// })
+watch(
+  () => route.params.id as string,
+  async (newId) => {
+    list.value = await store.fetchList(newId)
+  }
+, { immediate: true })
 
 function addWord() {
   console.log('adding word')
 }
 
 const deleteList = async () => {
-  if (!list) return
-  await store.deleteList(list.id)
+  if (!list.value) return
+
+  await store.deleteList(list.value.id)
   router.push('/lists')
 }
 </script>
