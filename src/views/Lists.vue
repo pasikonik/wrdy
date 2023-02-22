@@ -2,11 +2,24 @@
 import { ref } from 'vue'
 import { useListStore } from '@/stores/list'
 import List from '@/views/List.vue'
+import NoList from '@/components/NoList.vue'
+import { useRoute, useRouter } from 'vue-router'
 
 const newListName = ref('')
+const isLoading = ref(false)
 
+const route = useRoute()
+const router = useRouter()
 const store = useListStore()
-store.fetchLists()
+
+isLoading.value = true
+store.fetchLists().then((result) => {
+  isLoading.value = false
+  if(route.params.id || !result.length) return
+
+  const paramId = result[0].id
+  router.push({ name: 'list', params: { id: paramId }})
+})
 
 async function addNewList() {
   await store.createList(newListName.value)
@@ -24,19 +37,20 @@ async function addNewList() {
         link
       >
         <v-list-item-title>
-          {{ list.name }}
+          {{ list.name }} :{{ list.id }}
         </v-list-item-title>
       </v-list-item>
 
       <v-divider></v-divider>
 
-      <div class="addNew">
+      <div class="mt-2 addNew">
         <v-text-field
           v-model="newListName"
           label="new list"
           density="compact"
           :single-line="true"
           hide-details
+          @keyup.enter="addNewList"
         >
         </v-text-field>
 
@@ -53,7 +67,8 @@ async function addNewList() {
   </v-navigation-drawer>
 
   <v-main class="content">
-    <list></list>
+    <list v-if="route.params.id"></list>
+    <no-list v-else-if="!isLoading"></no-list>
   </v-main>
 </template>
 
