@@ -13,16 +13,20 @@ The application for consolidate newly discovered words.
 
 ## Roadmap 🚩
 
-- [ ] MVP:
+- [ ] PHASE 1 - MVP:
   - [ ] basic manage lists
   - [ ] basic manage words
   - [ ] import words from csv file
   - [ ] memorizing view
-- [ ] basic stats view
-- [ ] test coverage
-- [ ] support for multilingual
-- [ ] implement spaced repetition
-- [ ] use NanoID for user model
+- [ ] PHASE 2 - 
+  - [ ] words view with sorting by column 
+  - [ ] basic stats view
+  - [ ] test coverage
+  - [ ] reorder lists (drag & drop)
+- [ ] PHASE 3 - Polishing
+  - [ ] implement spaced repetition
+  - [ ] support for multilingual
+  - [ ] use NanoID for user model
 
 ### API 🗄️
 
