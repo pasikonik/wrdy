@@ -2,7 +2,6 @@ import api from '@/lib/api'
 import { defineStore } from 'pinia'
 import Word from '@/types/word'
 
-
 export const useWordStore = defineStore('word', {
     state: () => {
         return {
