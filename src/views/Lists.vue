@@ -37,7 +37,7 @@ async function addNewList() {
         link
       >
         <v-list-item-title>
-          {{ list.name }} :{{ list.id }}
+          {{ list.name }}
         </v-list-item-title>
       </v-list-item>
 
