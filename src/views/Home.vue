@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import HelloWorld from "@/components/HelloWorld.vue";
 </script>
 
 
 <template>
-  <div>
-    <HelloWorld msg="wiksa" />
-  </div>
+  <img class="image" src="/landing-art.png" alt="landing page art">
 </template>
 
+<style>
+.image {
+  width: 700px;
+  height: auto;
+}
+</style>
