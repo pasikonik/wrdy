@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, computed, Ref, ref, watch } from 'vue'
+import { Ref, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useListStore } from '@/stores/list'
 import List from '@/types/list'
@@ -38,6 +38,7 @@ const deleteList = async () => {
       class="deleteButton"
       icon="mdi-trash-can-outline"
       color="primary"
+      variant="outlined"
       @click="deleteList"
     />
 

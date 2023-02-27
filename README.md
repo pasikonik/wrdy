@@ -2,7 +2,7 @@
 
 The application for consolidate newly discovered words.
 
-## Environment ⚙️
+## ⚙️ Environment 
 
 | Tech       | Version |
 | ---------- | ------- |
@@ -11,7 +11,7 @@ The application for consolidate newly discovered words.
 | Pnpm       | 7.26.3  |
 | TypeScript | 4.9.5   |
 
-## Roadmap 🚩
+## 🚩 Roadmap 
 
 - [ ] PHASE 1 - MVP:
   - [ ] basic manage lists
@@ -25,9 +25,14 @@ The application for consolidate newly discovered words.
   - [ ] reorder lists (drag & drop)
 - [ ] PHASE 3 - Polishing
   - [ ] implement spaced repetition
-  - [ ] support for multilingual
+  - [ ] internationalization
   - [ ] use NanoID for user model
 
-### API 🗄️
+## 🗄️ API 
 
 Written in Ruby on Rails: [Wrdy API](https://github.com/pasikonik/wrdy-api)
+
+
+## ✏️ Concept landing 
+
+![landing](https://github.com/pasikonik/wrdy/blob/main/public/landing-art.png?raw=true)
