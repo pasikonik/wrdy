@@ -28,7 +28,7 @@ The application for consolidate newly discovered words.
   - [ ] internationalization
   - [ ] use NanoID for user model
 
-## 🗄️ API 
+## 🗄️ Backend API 
 
 Written in Ruby on Rails: [Wrdy API](https://github.com/pasikonik/wrdy-api)
 
