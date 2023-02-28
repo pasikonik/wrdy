@@ -1,7 +1,7 @@
 import Word from './word'
 
 export default interface List {
-  id: string
+  id: number
   name: string
   words?: Word[]
 }

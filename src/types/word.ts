@@ -1,5 +1,5 @@
 export default interface Word {
-  id: string
+  id: number
   origin: string
   translation: string
   proficiency: number

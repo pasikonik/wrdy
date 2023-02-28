@@ -10,7 +10,7 @@ export const useListStore = defineStore('list', {
   },
   getters: {
     getListById: (state) => {
-      return (listId: string) => state.all.get(Number(listId))
+      return (listId: number) => state.all.get(listId)
     },
   },
   actions: {
@@ -30,9 +30,9 @@ export const useListStore = defineStore('list', {
       this.all.set(list.id, list)
       return list
     },
-    async deleteList(listId: string) {
+    async deleteList(listId: number) {
       await api.delete(`lists/${listId}`)
-      this.all.delete(Number(listId))
+      this.all.delete(listId)
       return Promise.resolve()
     },
   },
