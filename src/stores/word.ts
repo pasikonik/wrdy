@@ -1,21 +1,36 @@
 import api from '@/lib/api'
 import { defineStore } from 'pinia'
 import Word from '@/types/word'
+import { useListStore } from './list' 
+import { ref } from 'vue'
 
-export const useWordStore = defineStore('word', {
-    state: () => {
-        return {
-            all: new Map() as Map<number, Word>
-        }
-    },
-    actions: {
-        async createWord(wordParams: unknown) {
-            const newWord = await api.post('words', wordParams)
-            this.all.set(newWord.id, newWord)
-            return newWord
-        },
-        async delteWord(wordId: string) {
-            api.delete(`words/${wordId}`)
-        }
+interface WordParams {
+    origin: string,
+    translation: string,
+    list_id: number
+}
+
+export const useWordStore = defineStore('word', () => {
+    const listStore = useListStore()
+
+    const all = ref<Map<number, Word>>(new Map()) 
+
+    async function createWord(wordParams: WordParams) {
+        const newWord = await api.post('words', wordParams)
+
+        listStore.all.get(newWord.list_id)?.words?.push(newWord)
+        all.value.set(newWord.id, newWord)
+        return newWord
     }
+
+    async function deleteWord(wordId: number) {
+        await api.delete(`words/${wordId}`)
+
+        all.value.delete(wordId)
+    }
+
+    return { all, createWord, deleteWord }
 })
+
+
+
