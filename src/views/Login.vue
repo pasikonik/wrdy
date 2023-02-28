@@ -46,6 +46,7 @@ async function login() {
           label="Password"
           prepend-icon="mdi-lock"
           :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+          @keyup.enter="login"
           @click:append="showPassword = !showPassword"
         />
       </v-form>
