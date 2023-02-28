@@ -3,9 +3,7 @@ import { Ref, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useListStore } from '@/stores/list'
 import List from '@/types/list'
-
-const newWordOrigin = ref('')
-const newWordTranslation = ref('')
+import NewWordForm from '@/components/NewWordForm.vue'
 
 const list: Ref<List | null> = ref(null)
 
@@ -20,9 +18,7 @@ watch(
   }
 , { immediate: true })
 
-function addWord() {
-  console.log('adding word')
-}
+
 
 const deleteList = async () => {
   if (!list.value) return
@@ -33,47 +29,23 @@ const deleteList = async () => {
 </script>
 
 <template>
-  <main v-if="list" class="listContainer">
+  <main v-if="list" class="container text-left">
+    <h2 class="text-h2">
+      {{ list.name }}
+    </h2>
+ 
     <v-btn
       class="deleteButton"
       icon="mdi-trash-can-outline"
-      color="primary"
+      color="error"
+      size="small"
       variant="outlined"
       @click="deleteList"
     />
 
-    <h1 class="d-flex align-center">
-      {{ list.name }}
-    </h1>
+    <h4 v-if="list.words">words: {{ list.words.length }}</h4>
 
-    <div>id: {{ list.id }}</div>
-    <!-- <div>words: {{ list.words.length }}</div> -->
-
-    <v-form>
-      <v-container>
-        <v-row>
-          <v-col cols="12" md="5">
-            <v-text-field
-              v-model="newWordOrigin"
-              label="Origin"
-              required
-            ></v-text-field>
-          </v-col>
-
-          <v-col cols="12" md="5">
-            <v-text-field
-              v-model="newWordTranslation"
-              label="Translation"
-              required
-            ></v-text-field>
-          </v-col>
-
-          <v-col cols="12" md="2" class="pt-6">
-            <v-btn color="primary" variant="text" @click="addWord"> Add </v-btn>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-form>
+    <new-word-form :list-id="list.id" />
 
     <div>
       <div v-for="word in list.words" :key="word.id">
@@ -83,15 +55,15 @@ const deleteList = async () => {
   </main>
 </template>
 
-<style scoped>
-.listContainer {
-  text-align: left;
+<style scoped>list
+.container {
   position: relative;
 }
 
 .deleteButton {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 85px;
+  right: 20px;
+  border: 0;
 }
 </style>
