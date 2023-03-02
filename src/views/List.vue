@@ -3,7 +3,9 @@ import { Ref, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useListStore } from '@/stores/list'
 import List from '@/types/list'
+import Word from '@/types/word'
 import NewWordForm from '@/components/NewWordForm.vue'
+import WordListing from '@/components/WordListing.vue'
 
 const list: Ref<List | null> = ref(null)
 
@@ -15,10 +17,9 @@ watch(
   () => route.params.id as string,
   async (newId) => {
     list.value = await store.fetchList(newId)
-  }
-, { immediate: true })
-
-
+  },
+  { immediate: true }
+)
 
 const deleteList = async () => {
   if (!list.value) return
@@ -33,9 +34,9 @@ const deleteList = async () => {
     <h2 class="text-h2">
       {{ list.name }}
     </h2>
- 
+
     <v-btn
-      class="deleteButton"
+      class="delete-button"
       icon="mdi-trash-can-outline"
       color="error"
       size="small"
@@ -47,23 +48,19 @@ const deleteList = async () => {
 
     <new-word-form :list-id="list.id" />
 
-    <div>
-      <div v-for="word in list.words" :key="word.id">
-        {{ word.origin }} - {{ word.translation }} - {{ word.proficiency }}
-      </div>
-    </div>
+    <word-listing :words="list.words as Word[]" />
   </main>
 </template>
 
-<style scoped>list
+<style scoped>
 .container {
   position: relative;
 }
 
-.deleteButton {
+.delete-button {
   position: absolute;
-  top: 85px;
-  right: 20px;
+  top: 0;
+  right: 0;
   border: 0;
 }
 </style>
