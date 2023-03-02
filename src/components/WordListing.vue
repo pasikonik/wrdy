@@ -28,6 +28,7 @@ function removeWord(wordId: number) {
 </script>
 
 <template>
+  <!-- eslint-disable-next-line vuetify/no-deprecated-components -->
   <v-data-table
     v-model:items-per-page="itemsPerPage"
     :headers="headers"
