@@ -41,14 +41,14 @@ async function addNewList() {
         </v-list-item-title>
       </v-list-item>
 
-      <v-divider></v-divider>
+      <v-divider />
 
-      <div class="mt-2 addNew">
+      <div class="mt-2 add-new">
         <v-text-field
           v-model="newListName"
-          label="new list"
+          label="new list name"
           density="compact"
-          :single-line="true"
+          variant="outlined"
           hide-details
           @keyup.enter="addNewList"
         >
@@ -57,7 +57,7 @@ async function addNewList() {
         <v-btn
           variant="flat"
           color="success"
-          class="plusButton"
+          class="plus-button rounded-s-0"
           @click="addNewList"
         >
           +
@@ -73,12 +73,12 @@ async function addNewList() {
 </template>
 
 <style scoped>
-.addNew {
+.add-new {
   display: flex;
   align-items: center;
 }
 
-.plusButton {
+.plus-button {
   font-size: xx-large;
 }
 
