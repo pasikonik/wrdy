@@ -28,6 +28,8 @@ async function addWord() {
             ref="wordInput"
             v-model="wordParams.origin"
             label="Word"
+            density="compact"
+            variant="outlined"
             required
           ></v-text-field>
         </v-col>
@@ -36,6 +38,8 @@ async function addWord() {
           <v-text-field
             v-model="wordParams.translation"
             label="Translation"
+            density="compact"
+            variant="outlined"
             required
             @keyup.enter="addWord"
           ></v-text-field>
@@ -43,7 +47,7 @@ async function addWord() {
 
         <v-col cols="12" md="2">
           <v-btn
-            class="addButton"
+            class="add-button"
             color="primary"
             variant="flat"
             block
@@ -58,8 +62,8 @@ async function addWord() {
 </template>
 
 <style scoped>
-button.addButton {
-  height: 56px;
+button.add-button {
+  height: 40px;
   font-weight: bold;
 }
 </style>
