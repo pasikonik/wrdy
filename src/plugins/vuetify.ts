@@ -4,6 +4,7 @@ import { createVuetify } from 'vuetify'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+import { VDataTable } from 'vuetify/labs/VDataTable'
 
 export default createVuetify({
     icons: {
@@ -13,6 +14,9 @@ export default createVuetify({
             mdi,
         }
     },
-    components,
+    components: {
+        VDataTable,
+        ...components,
+    },
     directives,
 })
