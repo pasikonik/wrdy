@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import Navbar from '@/components/Navbar.vue'
+import Navigation from '@/components/Navigation.vue'
 </script>
 
 <template>
   <v-app>
     <navbar />
+
+    <navigation />
 
     <v-main>
       <router-view :key="$route.path" />
@@ -20,6 +23,6 @@ import Navbar from '@/components/Navbar.vue'
 
 <style scoped lang="scss">
 .footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgb(0 0 0 / 0.1);
 }
 </style>

@@ -15,10 +15,10 @@ const store = useListStore()
 isLoading.value = true
 store.fetchLists().then((result) => {
   isLoading.value = false
-  if(route.params.id || !result.length) return
+  if (route.params.id || !result.length) return
 
   const paramId = result[0].id
-  router.push({ name: 'list', params: { id: paramId }})
+  router.push({ name: 'list', params: { id: paramId } })
 })
 
 async function addNewList() {
@@ -40,8 +40,6 @@ async function addNewList() {
           {{ list.name }}
         </v-list-item-title>
       </v-list-item>
-
-      <v-divider />
 
       <div class="mt-2 add-new">
         <v-text-field

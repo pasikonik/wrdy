@@ -32,23 +32,10 @@ const nav: readonly Nav[] = [
   <v-app-bar id="app-bar" border="b" flat>
     <template #prepend>
       <v-app-bar-nav-icon>
-        <v-icon large icon="mdi-alpha-w-circle-outline" />
+        <v-icon size="x-large" icon="mdi-alpha-w-circle-outline" />
       </v-app-bar-nav-icon>
       <v-app-bar-title> Wrdy </v-app-bar-title>
     </template>
-
-    <slot v-if="store.isLoggedIn">
-      <v-btn
-        v-for="item in nav"
-        :key="item.icon"
-        :to="item.path"
-        :prepend-icon="item.icon"
-        size="x-large"
-        variant="flat"
-      >
-        {{ item.text }}
-      </v-btn>
-    </slot>
 
     <template #append>
       <v-btn v-if="store.currentUser" variant="text" @click="store.logout">

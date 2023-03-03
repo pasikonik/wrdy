@@ -31,24 +31,25 @@ const deleteList = async () => {
 
 <template>
   <main v-if="list" class="container text-left">
-    <h2 class="text-h2">
+    <h1 class="text-h3 ml-3">
       {{ list.name }}
-    </h2>
+    </h1>
 
     <v-btn
       class="delete-button"
       icon="mdi-trash-can-outline"
       color="error"
-      size="small"
       variant="outlined"
       @click="deleteList"
     />
 
-    <h4 v-if="list.words">words: {{ list.words.length }}</h4>
+    <h4 v-if="list.words" class="text-h6 ml-4">
+      words: {{ list.words.length }}
+    </h4>
 
     <new-word-form :list-id="list.id" />
 
-    <word-listing :words="list.words as Word[]" />
+    <word-listing v-if="list.words?.length" :words="list.words as Word[]" />
   </main>
 </template>
 

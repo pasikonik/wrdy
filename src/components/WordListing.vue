@@ -12,11 +12,17 @@ const headers = [
   { title: 'Word', key: 'origin' },
   { title: 'Translation', key: 'translation' },
   { title: 'Proficiency', key: 'proficiency' },
-  { title: 'Actions', key: 'actions', sortable: false },
+  {
+    title: '',
+    key: 'actions',
+    align: 'end',
+    width: 10,
+    sortable: false,
+  },
 ]
 
 function getProgressColor(proficiency: number) {
-  if (proficiency >= 75 ) return 'green'
+  if (proficiency >= 75) return 'green'
   else if (proficiency >= 50) return 'orange'
   else if (proficiency >= 25) return 'amber'
   else return 'grey-lighten-2'
@@ -34,10 +40,9 @@ function removeWord(wordId: number) {
     :headers="headers"
     :items="words"
   >
-
     <!-- eslint-disable-next-line vue/valid-v-slot -->
     <template #item.proficiency="{ item }">
-      <v-progress-linear 
+      <v-progress-linear
         :model-value="item.raw.proficiency"
         :color="getProgressColor(item.raw.proficiency)"
         height="8"
@@ -48,18 +53,29 @@ function removeWord(wordId: number) {
     <!-- eslint-disable-next-line vue/valid-v-slot -->
     <template #item.actions="{ item }">
       <v-icon
-        class="align-right"
+        class="action"
         size="small"
         icon="mdi-trash-can-outline"
         @click="removeWord(item.raw.id)"
       />
     </template>
-
   </v-data-table>
 </template>
 
-<style scoped>
-.delete-action {
-  align-items: right;
+<style scoped lang="scss">
+.action {
+  opacity: 0;
+  color: rgb(0 0 0 / .3);
+}
+
+tr:hover {
+  i.action {
+    transition: all .8s ease;
+    opacity: 1;
+
+    &:hover {
+      color: #EF5350;
+    }
+  }
 }
 </style>
