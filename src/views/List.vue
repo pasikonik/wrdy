@@ -52,7 +52,7 @@ const deleteList = async () => {
   </main>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .container {
   position: relative;
 }

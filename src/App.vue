@@ -18,7 +18,7 @@ import Navbar from '@/components/Navbar.vue'
   </v-app>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .footer {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }

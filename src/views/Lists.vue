@@ -72,7 +72,7 @@ async function addNewList() {
   </v-main>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .add-new {
   display: flex;
   align-items: center;

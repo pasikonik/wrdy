@@ -14,7 +14,7 @@ const count = ref(0)
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .read-the-docs {
   color: #888;
 }

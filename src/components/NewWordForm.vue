@@ -61,7 +61,7 @@ async function addWord() {
   </v-form>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 button.add-button {
   height: 40px;
   font-weight: bold;
