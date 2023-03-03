@@ -8,49 +8,37 @@ const headers = () => {
   })
 }
 
-function basicHandle(res: any) {
-  if (!res.ok) {
-    throw new Error(res.status)
+async function http(path: string, config: RequestInit) {
+  const request = new Request(BASE_API_URL + path, {
+    headers: headers(),
+    ...config,
+  })
+  const response = await fetch(request)
+
+  if (!response.ok) {
+    throw new Error(`${response.status} - ${response.statusText}`)
   }
 
-  return res.json()
+  return response.json().catch(() => ({}))
 }
 
 const api = {
   async get(endpoint: string) {
-    const res = await fetch(BASE_API_URL + endpoint, {
-      headers: headers(),
-      method: 'get',
-    })
-
-    return await basicHandle(res)
+    const options = { method: 'get' }
+    return await http(endpoint, options)
   },
   async post(endpoint: string, body: object) {
-    const res = await fetch(BASE_API_URL + endpoint, {
-      headers: headers(),
-      method: 'post',
-      body: JSON.stringify(body),
-    })
-
-    return await basicHandle(res)
-  },
-  async delete(endpoint: string) {
-    const res = await fetch(BASE_API_URL + endpoint, {
-      headers: headers(),
-      method: 'delete',
-    })
-
-    return await basicHandle(res)
+    const options = { method: 'post', body: JSON.stringify(body) }
+    return await http(endpoint, options)
   },
   async put(endpoint: string, body: object) {
-    const res = await fetch(BASE_API_URL + endpoint, {
-      headers: headers(),
-      method: 'put',
-      body: JSON.stringify(body),
-    })
-
-    return await basicHandle(res)
+    const options = { method: 'put', body: JSON.stringify(body) }
+    return await http(endpoint, options)
   },
-}
+  async delete(endpoint: string) {
+    const options = { method: 'delete' }
+    return await http(endpoint, options)
+  },
+} as const
 
 export default api
