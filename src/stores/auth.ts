@@ -37,7 +37,7 @@ export const useAuthStore = defineStore('auth', {
     async fetchCurrentUser() {
       if (!this.token) return
 
-      const user = await api.get(`users/me`)
+      const user = await api.get('users/me')
       this.currentUser = user
     },
   },
