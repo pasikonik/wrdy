@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import Nav from '@/types/nav'
+import { useAuthStore } from '@/stores/auth'
+
+const store = useAuthStore()
 
 const nav: readonly Nav[] = [
   {
@@ -27,8 +30,9 @@ const nav: readonly Nav[] = [
 
 <template>
   <v-navigation-drawer
+    v-if="store.isLoggedIn"
     name="navigation"
-    class="text-left bg-deep-purple"
+    class="text-left"
     width="200"
     permanent
   >
