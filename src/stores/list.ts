@@ -2,6 +2,11 @@ import api from '@/lib/api'
 import { defineStore } from 'pinia'
 import List from '@/types/list'
 
+interface listParams {
+  id: number
+  name: string
+}
+
 export const useListStore = defineStore('list', {
   state: () => {
     return {
@@ -30,10 +35,15 @@ export const useListStore = defineStore('list', {
       this.all.set(list.id, list)
       return list
     },
-    async deleteList(listId: number) {
-      await api.delete(`lists/${listId}`)
-      this.all.delete(listId)
+    async deleteList(id: number) {
+      await api.delete(`lists/${id}`)
+      this.all.delete(id)
       return Promise.resolve()
+    },
+    async updateList(params: listParams) {
+      await api.put(`lists/${params.id}`, { name: params.name })
+      const list = this.all.get(params.id)
+      if (list) this.all.set(list.id, { ...list, name: params.name })
     },
   },
 })
