@@ -26,10 +26,10 @@ export const useAuthStore = defineStore('auth', {
     },
     async retrieveToken(credentials: Credentials) {
       try {
-        const { token, user } = await api.post('login', credentials)
+        const { token } = await api.post('login', credentials)
         localStorage.setItem('token', token)
         this.token = token
-        this.currentUser = user
+        this.fetchCurrentUser()
       } catch (error) {
         return error
       }

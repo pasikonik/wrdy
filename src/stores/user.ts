@@ -3,21 +3,20 @@ import { defineStore } from 'pinia'
 import { useAuthStore } from '@/stores/auth'
 
 interface userParams {
-    email: string,
-    password: string,
+  email: string
+  password: string
 }
 
 export const useUserStore = defineStore('user', {
-    actions: {
-        async create(params: userParams) {
-            try {
-                const auth = useAuthStore()
-                const user = await api.post('users', params)
-                auth.currentUser = user
-            } catch (error) {
-                console.log(error);
-                
-            }
-        }
-    }
+  actions: {
+    async create(params: userParams) {
+      try {
+        const auth = useAuthStore()
+        await api.post('users', params)
+        auth.retrieveToken(params)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+  },
 })
