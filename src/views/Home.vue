@@ -1,14 +1,11 @@
-<script setup lang="ts">
-</script>
-
-
 <template>
-  <img class="image" src="/landing-art.png" alt="landing page art">
+  <img class="image" src="/landing-art.jpg" alt="landing page art" />
 </template>
 
 <style>
 .image {
-  width: 700px;
-  height: auto;
+  height: calc(100vh - 120px);
+  width: auto;
+  overflow-x: hidden;
 }
 </style>
