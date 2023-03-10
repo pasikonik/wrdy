@@ -13,8 +13,8 @@ import Navigation from '@/components/Navigation.vue'
       <router-view :key="$route.path" />
     </v-main>
 
-    <v-footer>
-      <div class="footer px-4 py-2 text-center w-100">
+    <v-footer class="footer">
+      <div class="py-1 text-center w-100">
         <strong>Wrdy</strong> — {{ new Date().getFullYear() }}
       </div>
     </v-footer>
