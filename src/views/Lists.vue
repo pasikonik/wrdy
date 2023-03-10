@@ -34,6 +34,7 @@ async function addNewList() {
         v-for="[id, list] in store.all"
         :key="id"
         :to="{ name: 'list', params: { id } }"
+        class="text-center"
         link
       >
         <v-list-item-title>
@@ -64,10 +65,12 @@ async function addNewList() {
     </v-list>
   </v-navigation-drawer>
 
-  <v-main class="content">
-    <list v-if="route.params.id"></list>
-    <no-list v-else-if="!isLoading"></no-list>
-  </v-main>
+  <div class="container">
+    <div class="main">
+      <list v-if="route.params.id"></list>
+      <no-list v-else-if="!isLoading"></no-list>
+    </div>
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -80,10 +83,18 @@ async function addNewList() {
   font-size: xx-large;
 }
 
-.content {
+.container {
+  width: 100%;
+  padding-top: 30px;
+  min-height: calc(100vh - 114px);
+}
+
+.main {
+  flex-grow: 0;
+  padding: 40px;
+  width: 750px;
+  margin: 0 auto;
   min-height: 500px;
-  min-width: 700px;
-  padding: 30px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 </style>
