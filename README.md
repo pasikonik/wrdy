@@ -38,4 +38,4 @@ The application was inspired by [Vocabla](https://vocabla.com/), which is no lon
 
 ## ✏️ Concept landing
 
-![landing](https://github.com/pasikonik/wrdy/blob/main/public/landing-art.png?raw=true)
+![landing](https://github.com/pasikonik/wrdy/blob/main/public/landing-art.jpg?raw=true)
