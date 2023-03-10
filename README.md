@@ -34,7 +34,7 @@ Written in Ruby on Rails: [Wrdy API](https://github.com/pasikonik/wrdy-api)
 
 ## 💡 Inspiration
 
-The application was inspired by [Vocabla](https://vocabla.com/), which is no longer maintained. Its functionality was very similar to the concept of Wrdy. This project will be a slightly simplified version with the addition of greater ability to upload vocabulary from external sources.
+The application was inspired by [Vocabla](https://vocabla.com/), which is no longer maintained. Its functionality was very similar to the concept of Wrdy. This project will be a slightly simplified version with the addition of more versatile ability to import vocabulary from external sources (eg. file csv).
 
 ## ✏️ Concept landing
 
