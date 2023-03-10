@@ -46,13 +46,7 @@ async function addWord() {
         </v-col>
 
         <v-col cols="12" md="2">
-          <v-btn
-            class="add-button"
-            color="primary"
-            variant="flat"
-            block
-            @click="addWord"
-          >
+          <v-btn class="add-button" variant="outlined" block @click="addWord">
             Add
           </v-btn>
         </v-col>
