@@ -65,16 +65,16 @@ function removeWord(wordId: number) {
 <style scoped lang="scss">
 .action {
   opacity: 0;
-  color: rgb(0 0 0 / .3);
+  color: rgb(0 0 0 / 0.3);
 }
 
 tr:hover {
   i.action {
-    transition: all .8s ease;
     opacity: 1;
+    transition: all 0.6s ease 0.5s;
 
     &:hover {
-      color: #EF5350;
+      color: #ef5350;
     }
   }
 }

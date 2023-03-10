@@ -32,7 +32,6 @@ const nav: readonly Nav[] = [
   <v-navigation-drawer
     v-if="store.isLoggedIn"
     name="navigation"
-    class="text-left"
     width="200"
     permanent
   >
