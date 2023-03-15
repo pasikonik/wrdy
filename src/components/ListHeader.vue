@@ -16,8 +16,8 @@ let list = getListById.value(props.listId) as List
 const isEditing = ref(false)
 const newName = ref(list.name)
 
-watch(isEditing, (val, prevVal) => {
-  if (val == false && prevVal == true) {
+watch(isEditing, (newVal, oldVal) => {
+  if (newVal == false && oldVal == true) {
     list = getListById.value(props.listId) as List
   }
 })
@@ -42,11 +42,12 @@ const cancelEditing = () => {
   <div v-if="list" class="header">
     <v-text-field
       v-if="isEditing"
-      v-model="newName"
+      v-model.trim="newName"
       class="input-name"
       label="Name"
       variant="outlined"
       autofocus
+      :hide-details="true"
       @blur="cancelEditing"
       @keyup.esc="cancelEditing"
       @keyup.enter="updateList"
@@ -83,10 +84,18 @@ const cancelEditing = () => {
 }
 
 .input-name {
-  font-size: 100px;
+  padding: 0 16px;
+  width: 60%;
+}
+
+:deep(.input-name .v-field__input) {
+  font-size: 3rem;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .title {
   cursor: pointer;
+  padding: 11px 0;
 }
 </style>
