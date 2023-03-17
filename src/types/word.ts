@@ -3,4 +3,5 @@ export default interface Word {
   origin: string
   translation: string
   proficiency: number
+  list_id: number
 }

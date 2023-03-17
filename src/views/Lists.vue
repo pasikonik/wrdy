@@ -67,7 +67,10 @@ async function addNewList() {
 
   <div class="container">
     <div class="main">
-      <list v-if="route.params.id"></list>
+      <list
+        v-if="route.params.id"
+        :list-id="parseInt(route.params.id as string)"
+      ></list>
       <no-list v-else-if="!isLoading"></no-list>
     </div>
   </div>

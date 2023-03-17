@@ -15,7 +15,7 @@ The application for consolidate newly discovered words.
 
 - [ ] PHASE 1 - MVP:
   - [x] basic manage lists
-  - [ ] basic manage words
+  - [x] basic manage words
   - [ ] import words from csv file
   - [ ] memorizing view
 - [ ] PHASE 2 - Rough diamond

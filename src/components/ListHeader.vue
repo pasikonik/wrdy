@@ -1,40 +1,30 @@
 <script setup lang="ts">
-import { ref, watchEffect, watch } from 'vue'
+import { ref } from 'vue'
 import List from '@/types/list'
 import { useRouter } from 'vue-router'
 import { useListStore } from '@/stores/list'
-import { storeToRefs } from 'pinia'
 
 const router = useRouter()
 const store = useListStore()
-const { getListById } = storeToRefs(store)
 
-const props = defineProps<{ listId: number }>()
-
-let list = getListById.value(props.listId) as List
+const props = defineProps<{ list: List }>()
 
 const isEditing = ref(false)
-const newName = ref(list.name)
-
-watch(isEditing, (newVal, oldVal) => {
-  if (newVal == false && oldVal == true) {
-    list = getListById.value(props.listId) as List
-  }
-})
+const newName = ref(props.list.name)
 
 const deleteList = async () => {
-  await store.deleteList(list.id)
+  await store.deleteList(props.list.id)
   router.push('/lists')
 }
 
 const updateList = async () => {
-  await store.updateList({ id: list.id, name: newName.value })
+  await store.updateList({ id: props.list.id, name: newName.value })
   isEditing.value = false
 }
 
 const cancelEditing = () => {
   isEditing.value = false
-  newName.value = list.name
+  newName.value = props.list.name
 }
 </script>
 
@@ -52,7 +42,7 @@ const cancelEditing = () => {
       @keyup.esc="cancelEditing"
       @keyup.enter="updateList"
     ></v-text-field>
-    <h1 v-else class="text-h3 ml-3 title" @click="isEditing = true">
+    <h1 v-else class="text-h3 ml-3 list-name" @click="isEditing = true">
       {{ list.name }}
     </h1>
 
@@ -94,7 +84,7 @@ const cancelEditing = () => {
   padding-bottom: 0;
 }
 
-.title {
+.list-name {
   cursor: pointer;
   padding: 11px 0;
 }
