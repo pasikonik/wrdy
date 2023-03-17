@@ -52,5 +52,3 @@ const nav: readonly Nav[] = [
     </template>
   </v-navigation-drawer>
 </template>
-
-<style scoped lang="scss"></style>
