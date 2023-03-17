@@ -1,4 +1,4 @@
-# Wrdy
+# Wrdy - now you know 🧠
 
 The application for consolidate newly discovered words.
 
@@ -9,7 +9,7 @@ The application for consolidate newly discovered words.
 | Vue        | 3.2.47  |
 | Node       | 18.13.0 |
 | Pnpm       | 7.26.3  |
-| TypeScript | 4.9.5   |
+| TypeScript | 5.0.2   |
 
 ## 🚩 Roadmap
 
@@ -18,7 +18,7 @@ The application for consolidate newly discovered words.
   - [ ] basic manage words
   - [ ] import words from csv file
   - [ ] memorizing view
-- [ ] PHASE 2 -
+- [ ] PHASE 2 - Rough diamond
   - [ ] words view with sorting by column
   - [ ] basic stats view
   - [ ] test coverage
@@ -27,6 +27,8 @@ The application for consolidate newly discovered words.
   - [ ] implement spaced repetition
   - [ ] internationalization
   - [ ] use NanoID for user model
+- [ ] PHASE 4 - Shining
+  - [ ] simplify accessibility
 
 ## 🗄️ Backend API
 
