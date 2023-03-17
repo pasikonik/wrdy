@@ -5,7 +5,7 @@ import { useWordStore } from '@/stores/word'
 
 defineProps<{ words: Word[] }>()
 
-const wordStore = useWordStore()
+const store = useWordStore()
 
 let itemsPerPage = ref(100)
 const headers = [
@@ -26,10 +26,6 @@ function getProgressColor(proficiency: number) {
   else if (proficiency >= 50) return 'orange'
   else if (proficiency >= 25) return 'amber'
   else return 'grey-lighten-2'
-}
-
-function removeWord(wordId: number) {
-  wordStore.deleteWord(wordId)
 }
 </script>
 
@@ -56,7 +52,7 @@ function removeWord(wordId: number) {
         class="action"
         size="small"
         icon="mdi-trash-can-outline"
-        @click="removeWord(item.raw.id)"
+        @click="store.deleteWord(item.raw.id)"
       />
     </template>
   </v-data-table>
@@ -71,7 +67,7 @@ function removeWord(wordId: number) {
 tr:hover {
   i.action {
     opacity: 1;
-    transition: all 0.6s ease 0.5s;
+    transition: opacity 0.6s ease 0.3s;
 
     &:hover {
       color: #ef5350;
