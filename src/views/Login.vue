@@ -23,34 +23,53 @@ async function login() {
 </script>
 
 <template>
-  <v-card width="300" class="pa-2 mx-auto mt-16" variant="outlined">
+  <v-card
+    class="mx-auto mt-15 pa-12 pb-8"
+    elevation="12"
+    max-width="448"
+    rounded="lg"
+  >
     <v-card-title class="text-center">
-      <h2 class="text-h4 my-3">Login</h2>
+      <h1 class="text-h3">Login</h1>
     </v-card-title>
-    <v-card-text>
-      <v-form>
-        <v-text-field
-          v-model="credentials.email"
-          label="Email"
-          prepend-icon="mdi-account-circle"
-        />
-        <v-text-field
-          v-model="credentials.password"
-          :type="showPassword ? 'text' : 'password'"
-          name="password"
-          label="Password"
-          prepend-icon="mdi-lock"
-          :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-          @keyup.enter="login"
-          @click:append="showPassword = !showPassword"
-        />
-      </v-form>
-    </v-card-text>
 
-    <v-card-actions>
-      <v-btn color="success" variant="outlined" block @click="login">
-        Login
-      </v-btn>
-    </v-card-actions>
+    <div class="text-subtitle-1 text-medium-emphasis">Account</div>
+
+    <v-text-field
+      v-model="credentials.email"
+      placeholder="Email address"
+      prepend-inner-icon="mdi-email-outline"
+      variant="outlined"
+    ></v-text-field>
+
+    <div class="text-subtitle-1 text-medium-emphasis">Password</div>
+
+    <v-text-field
+      v-model="credentials.password"
+      :append-inner-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
+      :type="showPassword ? 'text' : 'password'"
+      placeholder="Enter your password"
+      prepend-inner-icon="mdi-lock-outline"
+      variant="outlined"
+      @click:append-inner="showPassword = !showPassword"
+    ></v-text-field>
+
+    <v-btn
+      block
+      class="mb-8 mt-4"
+      color="green"
+      size="x-large"
+      variant="tonal"
+      @click="login"
+    >
+      Log In
+    </v-btn>
+
+    <v-card-text class="text-center">
+      <router-link to="/sign-up" class="text-blue text-decoration-none"
+        >Sign up now
+        <v-icon icon="mdi-chevron-right" />
+      </router-link>
+    </v-card-text>
   </v-card>
 </template>
