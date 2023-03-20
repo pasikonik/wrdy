@@ -15,22 +15,22 @@ The application for consolidate newly discovered words. The vocabulary will be m
 
 ## 🚩 Roadmap
 
-- [ ] PHASE 1 - MVP:
+- [ ] PHASE 1 - _MVP_:
   - [x] Implement basic list management functionality
   - [x] Implement basic word management functionality
   - [ ] Add the ability to import words from a CSV file
   - [ ] Implement a view for memorizing words
-- [ ] PHASE 2 - Rough diamond
+- [ ] PHASE 2 - _Rough diamond_
   - [ ] Add the ability to sort words by column in the word view
   - [ ] Implement a basic statistics view
   - [ ] Increase test coverage to ensure software reliability
   - [ ] Allow users to reorder lists using drag & drop functionality
-- [ ] PHASE 3 - Polishing
+- [ ] PHASE 3 - _Polishing_
   - [ ] Implement spaced repetition functionality for better memorization
   - [ ] Add support for internationalization
   - [ ] Use NanoID to generate unique IDs for user models
   - [ ] Add notification system
-- [ ] PHASE 4 - Shining
+- [ ] PHASE 4 - _Shining_
   - [ ] Improve accessibility
   - [ ] Add keyboard shortcuts to improve user productivity
 
