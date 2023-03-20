@@ -2,6 +2,8 @@
 
 The application for consolidate newly discovered words. The vocabulary will be memorized using checking the exact spelling. The target application will use _spaced repetition_ as an effective technique for long-term memorization.
 
+### Stage: Alpha
+
 ## ⚙️ Environment
 
 |                                                                                                                                                                              | Tech       | Version |
