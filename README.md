@@ -18,7 +18,7 @@ The application for consolidate newly discovered words. The vocabulary will be m
 - [ ] PHASE 1 - _MVP_:
   - [x] Implement basic list management functionality
   - [x] Implement basic word management functionality
-  - [ ] Add the ability to import words from a CSV file
+  - [x] Add the ability to import words from a CSV file
   - [ ] Implement a view for memorizing words
 - [ ] PHASE 2 - _Rough diamond_
   - [ ] Add the ability to sort words by column in the word view
