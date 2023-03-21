@@ -39,6 +39,17 @@ const api = {
     const options = { method: 'delete' }
     return await http(endpoint, options)
   },
+  async sendFile(endpoint: 'import', formData: FormData) {
+    const response = await fetch(BASE_API_URL + endpoint, {
+      method: 'post',
+      body: formData,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+
+    return response.json()
+  },
 } as const
 
 export default api
