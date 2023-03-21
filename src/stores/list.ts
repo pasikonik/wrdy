@@ -17,6 +17,7 @@ export const useListStore = defineStore('list', {
     getListById: (state) => {
       return (listId: number) => state.all.get(listId)
     },
+    getAllNames: (state) => Array.from(state.all.values()).map((el) => el.name),
   },
   actions: {
     async createList(newListName: string) {
