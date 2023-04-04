@@ -15,10 +15,12 @@ const { getAllNames } = storeToRefs(listStore)
 
 const files = ref<File[]>([])
 const listToImport = ref()
+const isImporting = ref(false)
 
 async function importFile() {
   if (!files.value.length) return
 
+  isImporting.value = true
   const file = files.value[0]
   const form = new FormData()
   form.append('file', file)
@@ -39,12 +41,14 @@ async function importFile() {
     <v-combobox
       v-model="listToImport"
       :items="getAllNames"
+      :disabled="isImporting"
       label="Select list or create new one"
       variant="outlined"
     ></v-combobox>
 
     <v-file-input
       v-model="files"
+      :disabled="isImporting"
       show-size
       prepend-icon="mdi-file-document-outline"
       accept=".csv"
@@ -60,6 +64,16 @@ async function importFile() {
       append-icon="mdi-send"
       @click="importFile"
       >Send
+
+      <template #append>
+        <v-progress-circular
+          v-if="isImporting"
+          indeterminate
+          size="25"
+          color="green"
+        ></v-progress-circular
+        ><v-icon v-else icon="mdi-send"
+      /></template>
     </v-btn>
   </div>
 </template>
@@ -68,6 +82,6 @@ async function importFile() {
 .container {
   width: 450px;
   padding: 3em;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: $light-border;
 }
 </style>
