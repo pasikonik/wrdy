@@ -8,6 +8,7 @@ import SignUp from '@/views/SignUp.vue'
 import Lists from '@/views/Lists.vue'
 import Import from '@/views/Import.vue'
 import Stats from '@/views/Stats.vue'
+import Play from '@/views/Play.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -36,6 +37,14 @@ const routes: RouteRecordRaw[] = [
     name: 'list',
     component: Lists,
     meta: { requiresAuth: true },
+    children: [
+      {
+        path: 'play',
+        name: 'play',
+        component: Play,
+        meta: { requiresAuth: true },
+      },
+    ],
   },
   {
     path: '/import',
