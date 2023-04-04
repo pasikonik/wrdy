@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Word from '@/types/word'
+import type Word from '@/types/word'
 import { useWordStore } from '@/stores/word'
 
 defineProps<{ words: Word[] }>()
@@ -61,7 +61,7 @@ function getProgressColor(proficiency: number) {
 <style scoped lang="scss">
 .action {
   opacity: 0;
-  color: rgb(0 0 0 / 0.3);
+  color: $gray;
 }
 
 tr:hover {
@@ -70,7 +70,7 @@ tr:hover {
     transition: opacity 0.6s ease 0.3s;
 
     &:hover {
-      color: #ef5350;
+      color: $light-red;
     }
   }
 }

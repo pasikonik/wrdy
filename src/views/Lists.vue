@@ -88,7 +88,7 @@ async function addNewList() {
 
 .container {
   width: 100%;
-  padding-top: 30px;
+  padding: 30px 0;
   min-height: calc(100vh - 114px);
 }
 
@@ -98,6 +98,6 @@ async function addNewList() {
   width: 750px;
   margin: 0 auto;
   min-height: 500px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: $light-border;
 }
 </style>
