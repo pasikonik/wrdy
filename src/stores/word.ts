@@ -1,6 +1,6 @@
 import api from '@/lib/api'
 import { defineStore } from 'pinia'
-import Word from '@/types/word'
+import type Word from '@/types/word'
 import { useListStore } from './list'
 import { ref, computed } from 'vue'
 
@@ -18,6 +18,10 @@ export const useWordStore = defineStore('word', () => {
   const wordsForList = computed(() => {
     return (listId: number): Word[] =>
       Array.from(all.value.values()).filter((word) => word.list_id == listId)
+  })
+
+  const wordsCount = computed(() => {
+    return (listId: number): number => wordsForList.value(listId).length || 0
   })
 
   async function fetchWords(listId: number) {
@@ -42,5 +46,5 @@ export const useWordStore = defineStore('word', () => {
     all.value.delete(wordId)
   }
 
-  return { all, wordsForList, fetchWords, createWord, deleteWord }
+  return { all, wordsForList, wordsCount, fetchWords, createWord, deleteWord }
 })

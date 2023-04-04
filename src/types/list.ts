@@ -1,4 +1,4 @@
-import Word from './word'
+import type Word from './word'
 
 export default interface List {
   id: number

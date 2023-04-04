@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import List from '@/types/list'
+import type List from '@/types/list'
 import { useRouter } from 'vue-router'
 import { useListStore } from '@/stores/list'
 
@@ -58,13 +58,24 @@ const cancelEditing = () => {
 </template>
 
 <style scoped lang="scss">
+.list-name {
+  cursor: pointer;
+  padding: 11px 0;
+}
+
+.input-name {
+  padding: 0 16px;
+  width: 70%;
+}
+
 .delete-button {
   visibility: hidden;
   position: absolute;
-  top: 0;
+  top: 10px;
   right: 0;
   border: 0;
 }
+
 .header {
   position: relative;
 
@@ -73,19 +84,21 @@ const cancelEditing = () => {
   }
 }
 
-.input-name {
-  padding: 0 16px;
-  width: 60%;
+:deep(.v-btn--icon.delete-button) {
+  i {
+    color: $strong-gray;
+  }
+
+  &:hover {
+    i {
+      color: $light-red;
+    }
+  }
 }
 
 :deep(.input-name .v-field__input) {
   font-size: 3rem;
   padding-top: 0;
   padding-bottom: 0;
-}
-
-.list-name {
-  cursor: pointer;
-  padding: 11px 0;
 }
 </style>

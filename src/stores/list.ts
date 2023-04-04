@@ -1,6 +1,6 @@
 import api from '@/lib/api'
 import { defineStore } from 'pinia'
-import List from '@/types/list'
+import type List from '@/types/list'
 
 interface listParams {
   id: number
@@ -15,9 +15,10 @@ export const useListStore = defineStore('list', {
   },
   getters: {
     getListById: (state) => {
-      return (listId: number) => state.all.get(listId)
+      return (listId: number) => state.all.get(listId) as List
     },
-    getAllNames: (state) => Array.from(state.all.values()).map((el) => el.name),
+    getAllNames: (state): string[] =>
+      Array.from(state.all.values()).map((el) => el.name),
   },
   actions: {
     async createList(newListName: string) {
