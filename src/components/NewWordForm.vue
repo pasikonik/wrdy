@@ -30,6 +30,7 @@ async function addWord() {
             label="Word"
             density="compact"
             variant="outlined"
+            hide-details
             required
           ></v-text-field>
         </v-col>
@@ -40,6 +41,7 @@ async function addWord() {
             label="Translation"
             density="compact"
             variant="outlined"
+            hide-details
             required
             @keyup.enter="addWord"
           ></v-text-field>
