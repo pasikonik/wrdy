@@ -24,7 +24,7 @@
     "pinia": "^2.0.33",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
-    "vuetify": "^3.1.12"
+    "vuetify": "^3.1.13"
   },
   "devDependencies": {
     "@mdi/font": "^7.2.96",
@@ -39,7 +39,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-vue": "^9.10.0",
     "eslint-plugin-vuetify": "2.0.0-beta.3",
-    "happy-dom": "^9.1.0",
+    "happy-dom": "^9.1.7",
     "msw": "^1.2.1",
     "postcss": ">=8.4.19 <9.0.0",
     "postcss-html": "^1.5.0",

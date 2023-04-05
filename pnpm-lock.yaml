@@ -13,7 +13,7 @@ specifiers:
   eslint-config-prettier: ^8.8.0
   eslint-plugin-vue: ^9.10.0
   eslint-plugin-vuetify: 2.0.0-beta.3
-  happy-dom: ^9.1.0
+  happy-dom: ^9.1.7
   msw: ^1.2.1
   pinia: ^2.0.33
   postcss: '>=8.4.19 <9.0.0'
@@ -30,13 +30,13 @@ specifiers:
   vue: ^3.2.47
   vue-router: ^4.1.6
   vue-tsc: ^1.2.0
-  vuetify: ^3.1.12
+  vuetify: ^3.1.13
 
 dependencies:
   pinia: 2.0.33_dtiidk7kpxlb6f6tlcun7ghfqm
   vue: 3.2.47
   vue-router: 4.1.6_vue@3.2.47
-  vuetify: 3.1.12_vue@3.2.47
+  vuetify: 3.1.13_vue@3.2.47
 
 devDependencies:
   '@mdi/font': 7.2.96
@@ -50,8 +50,8 @@ devDependencies:
   eslint: 8.37.0
   eslint-config-prettier: 8.8.0_eslint@8.37.0
   eslint-plugin-vue: 9.10.0_eslint@8.37.0
-  eslint-plugin-vuetify: 2.0.0-beta.3_3stjjyiomlawymddogvaqxnaku
-  happy-dom: 9.1.0
+  eslint-plugin-vuetify: 2.0.0-beta.3_ehqrlsmhfezj6jetoosfimt37i
+  happy-dom: 9.1.7
   msw: 1.2.1_typescript@5.0.3
   postcss: 8.4.21
   postcss-html: 1.5.0
@@ -63,7 +63,7 @@ devDependencies:
   stylelint-config-recommended-vue: 1.4.0_4i3jeu7aznyfktsaj5a2mymbyu
   typescript: 5.0.3
   vite: 4.2.1_hghbulspu73jfdazs4i6yiqype
-  vitest: 0.29.8_m5e5urfuuj6o7pbnerv6j6ibai
+  vitest: 0.29.8_sel5j3q2gjep37tdtzyl2zone4
   vue-tsc: 1.2.0_typescript@5.0.3
 
 packages:
@@ -727,7 +727,7 @@ packages:
       c8: 7.13.0
       picocolors: 1.0.0
       std-env: 3.3.2
-      vitest: 0.29.8_m5e5urfuuj6o7pbnerv6j6ibai
+      vitest: 0.29.8_sel5j3q2gjep37tdtzyl2zone4
     dev: true
 
   /@vitest/expect/0.29.8:
@@ -1577,7 +1577,7 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-vuetify/2.0.0-beta.3_3stjjyiomlawymddogvaqxnaku:
+  /eslint-plugin-vuetify/2.0.0-beta.3_ehqrlsmhfezj6jetoosfimt37i:
     resolution: {integrity: sha512-1pm+7wZ3p6NVi8lWb7AuyvrsL0S9pU2M1YDGCAgBI75otfC2VX4Nxil0Lgc1WhNQDPdIW0sStuD2DAZ58Q8VyA==}
     peerDependencies:
       eslint: ^8.0.0
@@ -1586,7 +1586,7 @@ packages:
       eslint: 8.37.0
       eslint-plugin-vue: 9.10.0_eslint@8.37.0
       requireindex: 1.2.0
-      vuetify: 3.1.12_vue@3.2.47
+      vuetify: 3.1.13_vue@3.2.47
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1940,8 +1940,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
     dev: true
 
-  /happy-dom/9.1.0:
-    resolution: {integrity: sha512-Z/oOcAJsZjHFOQ/VK8n0CnZBjWucZNeZwFdlDK234vIBW9IVYGWjSUR9ujK6nwsSzJ6vNdYuSZoiag72AzlD0A==}
+  /happy-dom/9.1.7:
+    resolution: {integrity: sha512-tLkzW0w9EclIsV75hlCFStJa7CYSEUe+OVU8vK+3wzSvzFeXrGnCujuMcYQAPUXDl1CXoQ2ySaTZcqt3ZBJbSw==}
     dependencies:
       css.escape: 1.5.1
       he: 1.2.0
@@ -3744,7 +3744,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.29.8_m5e5urfuuj6o7pbnerv6j6ibai:
+  /vitest/0.29.8_sel5j3q2gjep37tdtzyl2zone4:
     resolution: {integrity: sha512-JIAVi2GK5cvA6awGpH0HvH/gEG9PZ0a/WoxdiV3PmqK+3CjQMf8c+J/Vhv4mdZ2nRyXFw66sAg6qz7VNkaHfDQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -3787,7 +3787,7 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-      happy-dom: 9.1.0
+      happy-dom: 9.1.7
       local-pkg: 0.4.3
       pathe: 1.1.0
       picocolors: 1.0.0
@@ -3878,8 +3878,8 @@ packages:
       '@vue/server-renderer': 3.2.47_vue@3.2.47
       '@vue/shared': 3.2.47
 
-  /vuetify/3.1.12_vue@3.2.47:
-    resolution: {integrity: sha512-6SOMWzNtziDdi/Noeg0l9Q5o20amIuqmj9V5W8fV1nCNdQUZsi6mt9iN+UcfjqwAaALS/z5Nbd4v5OJxy8M4Rw==}
+  /vuetify/3.1.13_vue@3.2.47:
+    resolution: {integrity: sha512-mC2UvWqS3Ne/aZ6Q+79kiL36xSe5jGxm0KWWq2e4SRxuqIE14IbyzqfXvU0bEqns0dHU5dOiKCMM9jHZFDLKgQ==}
     engines: {node: ^12.20 || >=14.13}
     peerDependencies:
       vite-plugin-vuetify: ^1.0.0-alpha.12
