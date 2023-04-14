@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useListStore } from '@/stores/list'
+import Play from '@/views/Play.vue'
 import List from '@/views/List.vue'
 import NoList from '@/components/NoList.vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -12,13 +13,15 @@ const route = useRoute()
 const router = useRouter()
 const store = useListStore()
 
+let currentRouteName = computed(() => route.name)
+let paramListId = computed(() => parseInt(route.params.id as string))
+
 isLoading.value = true
 store.fetchLists().then((result) => {
   isLoading.value = false
   if (route.params.id || !result.length) return
 
-  const paramId = result[0].id
-  router.push({ name: 'list', params: { id: paramId } })
+  router.push({ name: 'list', params: { id: result[0].id } })
 })
 
 async function addNewList() {
@@ -67,11 +70,9 @@ async function addNewList() {
 
   <div class="container">
     <div class="main">
-      <list
-        v-if="route.params.id"
-        :list-id="parseInt(route.params.id as string)"
-      ></list>
-      <no-list v-else-if="!isLoading"></no-list>
+      <play v-if="currentRouteName == 'play'" :list-id="paramListId" />
+      <list v-else-if="currentRouteName == 'list'" :list-id="paramListId" />
+      <no-list v-else-if="!isLoading" />
     </div>
   </div>
 </template>
