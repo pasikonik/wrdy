@@ -20,6 +20,14 @@ export const useWordStore = defineStore('word', () => {
       Array.from(all.value.values()).filter((word) => word.list_id == listId)
   })
 
+  const pickWordsToLearn = computed(() => {
+    return (listId: number) =>
+      wordsForList
+        .value(listId)
+        .sort((a, b) => a.proficiency - b.proficiency)
+        .slice(-5)
+  })
+
   const wordsCount = computed(() => {
     return (listId: number): number => wordsForList.value(listId).length || 0
   })
@@ -46,5 +54,13 @@ export const useWordStore = defineStore('word', () => {
     all.value.delete(wordId)
   }
 
-  return { all, wordsForList, wordsCount, fetchWords, createWord, deleteWord }
+  return {
+    all,
+    wordsForList,
+    pickWordsToLearn,
+    wordsCount,
+    fetchWords,
+    createWord,
+    deleteWord,
+  }
 })
