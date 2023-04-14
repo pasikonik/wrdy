@@ -42,7 +42,7 @@ const cancelEditing = () => {
       @keyup.esc="cancelEditing"
       @keyup.enter="updateList"
     ></v-text-field>
-    <h1 v-else class="text-h3 ml-3 list-name" @click="isEditing = true">
+    <h1 v-else class="text-h3 ml-4 list-name" @click="isEditing = true">
       {{ list.name }}
     </h1>
 
