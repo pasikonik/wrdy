@@ -29,14 +29,15 @@ wordStore.fetchWords(props.listId).then(() => {
     <div class="mx-4 d-flex align-center">
       <v-btn
         prepend-icon="mdi-play"
-        color="blue"
+        color="orange"
         variant="flat"
         size="x-large"
-        :to="{ name: 'play', params: { listId } }"
-        >Play</v-btn
+        :to="{ name: 'play', params: { id: listId } }"
       >
+        Play
+      </v-btn>
 
-      <span class="counter px-6"> Count: {{ wordsCount(listId) }} </span>
+      <span class="counter px-6"> Words: {{ wordsCount(listId) }} </span>
     </div>
 
     <new-word-form :list-id="listId" />
