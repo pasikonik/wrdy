@@ -24,7 +24,7 @@ export const useWordStore = defineStore('word', () => {
     return (listId: number) =>
       wordsForList
         .value(listId)
-        .sort((a, b) => a.proficiency - b.proficiency)
+        .sort((a, b) => b.proficiency - a.proficiency)
         .slice(-5)
   })
 
@@ -54,6 +54,14 @@ export const useWordStore = defineStore('word', () => {
     all.value.delete(wordId)
   }
 
+  async function updateProficiency(wordIds: number[]) {
+    const words = await api.put('words', { word_ids: wordIds })
+
+    words.forEach((word: Word) => {
+      all.value.set(word.id, word)
+    })
+  }
+
   return {
     all,
     wordsForList,
@@ -62,5 +70,6 @@ export const useWordStore = defineStore('word', () => {
     fetchWords,
     createWord,
     deleteWord,
+    updateProficiency,
   }
 })
