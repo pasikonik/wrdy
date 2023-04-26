@@ -13,8 +13,7 @@ const route = useRoute()
 const router = useRouter()
 const store = useListStore()
 
-let currentRouteName = computed(() => route.name)
-let paramListId = computed(() => parseInt(route.params.id as string))
+const paramListId = computed(() => parseInt(route.params.id as string))
 
 isLoading.value = true
 store.fetchLists().then((result) => {
@@ -70,8 +69,8 @@ async function addNewList() {
 
   <div class="container">
     <div class="main">
-      <play v-if="currentRouteName == 'play'" :list-id="paramListId" />
-      <list v-else-if="currentRouteName == 'list'" :list-id="paramListId" />
+      <play v-if="route.name == 'play'" :list-id="paramListId" />
+      <list v-else-if="route.name == 'list'" :list-id="paramListId" />
       <no-list v-else-if="!isLoading" />
     </div>
   </div>
