@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import type Word from '@/types/word'
-
-interface Entry {
-  success: number
-  fail: number
-  word: Word
-}
+import type Entry from '@/types/entry'
 
 const props = defineProps<{ words: Word[] }>()
+const emit = defineEmits(['finish'])
 
 const entries = ref<Entry[]>([])
 const showCard = ref(true)
@@ -29,16 +25,16 @@ const incomplete = computed(() => {
   })
 })
 
+const complete = computed(() => {
+  return entries.value.filter((e) => !incomplete.value.includes(e))
+})
+
 const currentEntry = computed(() => {
   return incomplete.value[pointer.value]
 })
 
-const completeLength = computed(() => {
-  return entries.value.length - incomplete.value.length
-})
-
 const progress = computed(() => {
-  return (completeLength.value / entries.value.length) * 100
+  return (complete.value.length / entries.value.length) * 100
 })
 
 const jumpNext = () => {
@@ -63,7 +59,7 @@ const markFail = () => {
 }
 
 const finish = () => {
-  console.log('finish :>> ')
+  emit('finish', complete.value)
 }
 
 watch(
@@ -78,12 +74,12 @@ watch(
 
 <template>
   <div class="status-bar rounded mb-4 pa-4 text-center">
-    <span> Complete: {{ completeLength }} / {{ entries.length }} </span>
+    <span> Complete: {{ complete.length }} / {{ entries.length }} </span>
 
     <v-progress-linear
-      class="mt-1"
       v-model="progress"
-      color="cyan"
+      class="mt-1"
+      color="green"
       height="10"
     ></v-progress-linear>
   </div>
