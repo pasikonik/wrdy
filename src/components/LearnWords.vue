@@ -1,80 +1,109 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, nextTick } from 'vue'
 import type Word from '@/types/word'
 import type Entry from '@/types/entry'
 
 const props = defineProps<{ words: Word[] }>()
 const emit = defineEmits(['finish'])
 
-const entries = ref<Entry[]>([])
 const showCard = ref(true)
+const isSuccess = ref(false)
+const isFail = ref(false)
 const pointer = ref(0)
 const guess = ref('')
-
-for (const word of props.words) {
-  entries.value.push({
+const input = ref(null)
+const completed = ref<Entry[]>([])
+const entries = ref<Entry[]>(
+  props.words.map((word) => ({
     success: 0,
     fail: 0,
     word: word,
-  })
-}
-
-const incomplete = computed(() => {
-  return entries.value.filter(({ success, fail }) => {
-    return success == 0 || success < fail * 2
-  })
-})
-
-const complete = computed(() => {
-  return entries.value.filter((e) => !incomplete.value.includes(e))
-})
+  })),
+)
 
 const currentEntry = computed(() => {
-  return incomplete.value[pointer.value]
+  return entries.value[pointer.value]
+})
+
+const allWordsCounter = computed(() => {
+  return entries.value.length + completed.value.length
 })
 
 const progress = computed(() => {
-  return (complete.value.length / entries.value.length) * 100
+  return (
+    (completed.value.length / allWordsCounter.value) *
+    100
+  )
 })
 
-const jumpNext = () => {
+const slideIn = () => {
+  showCard.value = true // animation 200ms
+  nextTick(() => {
+    ;(input.value as HTMLElement | null)?.focus()
+  })
+}
+
+const next = (isChecked: boolean) => {
   guess.value = ''
-  if (pointer.value + 1 >= incomplete.value.length) {
-    pointer.value = 0
+  isFail.value = false
+  isSuccess.value = false
+
+  if (isChecked && currentEntry.value.success >= currentEntry.value.fail * 2) {
+    completed.value.push(entries.value.shift() as Entry)
   } else {
     pointer.value++
   }
+
+  if (pointer.value >= entries.value.length || entries.value.length == 0) {
+    pointer.value = 0
+  }
+
+  if (entries.value.length == 0) {
+    setTimeout(() => {
+      emit('finish', completed.value)
+    }, 500)
+  } else {
+    slideIn()
+  }
+}
+
+const slideOut = (isChecked: boolean) => {
+  showCard.value = false // animation 200ms
+
+  setTimeout(() => {
+    next(isChecked)
+  }, 350)
 }
 
 const check = () => {
-  if (currentEntry.value.word.translation == guess.value) {
+  if (currentEntry.value.word.origin == guess.value) {
+    isSuccess.value = true
     currentEntry.value.success++
-    jumpNext()
+
+    setTimeout(() => {
+      slideOut(true)
+    }, 400)
   }
 }
 
 const markFail = () => {
+  isFail.value = true
   currentEntry.value.fail++
-  jumpNext()
+  const flashTime = currentEntry.value.word.origin.length * 150
+
+  setTimeout(() => {
+    slideOut(false)
+  }, flashTime)
 }
 
 const finish = () => {
-  emit('finish', complete.value)
+  emit('finish', completed.value)
 }
-
-watch(
-  () => incomplete.value.length,
-  (left) => {
-    if (left == 0) {
-      finish()
-    }
-  }
-)
 </script>
 
 <template>
-  <div class="status-bar rounded mb-4 pa-4 text-center">
-    <span> Complete: {{ complete.length }} / {{ entries.length }} </span>
+  <div class="status-bar rounded mb-8 pa-4 text-center">
+    <span> Complete: {{ completed.length }} / {{ allWordsCounter }} </span>
 
     <v-progress-linear
       v-model="progress"
@@ -84,51 +113,71 @@ watch(
     ></v-progress-linear>
   </div>
 
-  <Transition name="slide-fade">
-    <v-card
-      v-show="showCard"
-      class="mx-auto my-8 pa-3 word-card"
-      max-width="400"
-      variant="outlined"
-    >
-      <v-card-item>
-        <div class="text-h4 mb-1 pa-8 text-center">
-          {{ incomplete[pointer].word.origin }}
-        </div>
-      </v-card-item>
+  <div class="card-container">
+    <Transition name="slide">
+      <v-card
+        v-show="showCard"
+        :class="[
+          { fail: isFail, success: isSuccess },
+          'mx-auto',
+          'pa-3',
+          'word-card',
+        ]"
+        max-width="420"
+        variant="outlined"
+      >
+        <v-card-item class="text-center">
+          <div class="text-h4 pt-10">
+            {{ currentEntry?.word.translation }}
+          </div>
 
-      <v-card-actions>
-        <v-text-field
-          v-model="guess"
-          density="compact"
-          variant="outlined"
-          hide-details
-          required
-          autofocus
-          @keyup.enter="markFail"
-          @update:model-value="check"
-        ></v-text-field>
+          <div v-visibility="isFail" class="correct">
+            {{ currentEntry?.word.origin }}
+          </div>
+        </v-card-item>
 
-        <v-btn class="ml-4" color="green" variant="outlined" @click="markFail">
-          Check
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </Transition>
+        <v-card-actions>
+          <v-text-field
+            ref="input"
+            v-model="guess"
+            :class="{ 'text-decoration-line-through': isFail }"
+            density="compact"
+            variant="outlined"
+            hide-details
+            required
+            autofocus
+            @keyup.enter="markFail"
+            @update:model-value="check"
+          ></v-text-field>
 
-  <div class="action-bar rounded mt-5 pa-2 text-right">
-    <v-btn variant="outlined" @click="finish"> Finish </v-btn>
+          <v-btn
+            class="ml-4"
+            color="green"
+            variant="outlined"
+            @click="markFail"
+          >
+            Check
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </Transition>
   </div>
 
-  <br />
-  <h2 class="text-h5">helper:</h2>
-  <div v-for="entry in entries" :key="entry.word.id">
-    {{ entry.word.origin }} - {{ entry.word.translation }} |
-    {{ entry.success }} : {{ entry.fail }}
+  <div class="action-bar rounded pa-2 text-right">
+    Current: [{{ pointer + 1 }}] ׀ Success:
+    {{ entries.map((e) => e.success) }} ׀ Fail: {{ entries.map((e) => e.fail) }}
+    <v-btn class="mx-2" variant="outlined" @click="showCard = !showCard">
+      Card TOGGLE
+    </v-btn>
+    <v-btn variant="outlined" @click="finish"> Finish </v-btn>
   </div>
 </template>
 
 <style scoped lang="scss">
+.card-container {
+  height: 250px;
+}
+
 .word-card {
   border: $light-border;
 }
@@ -141,20 +190,47 @@ watch(
   border: $light-border;
 }
 
-.slide-fade-enter-active {
-  transition: all 0.3s ease-out;
+.fail {
+  border: 1px solid rgba($light-red, 0.8);
+  box-shadow: none;
+  animation: glow 0.3s ease-out 0s 1 normal forwards;
 }
 
-.slide-fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+.success {
+  border: 1px solid $primary-green;
+  box-shadow: 0 0 30px rgba($primary-green, 0.8);
 }
 
-.slide-fade-enter-from {
-  transform: translateX(80px);
+@keyframes glow {
+  from {
+    box-shadow: 0 0 1px $light-red;
+  }
+  to {
+    box-shadow: 0 0 30px rgba($light-red, 0.8);
+  }
+}
+
+.correct {
+  color: green;
+  font-size: 1.5em;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.2s ease-in;
+}
+
+.slide-enter {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slide-leave-to {
+  transform: translateX(-50%);
   opacity: 0;
 }
-.slide-fade-leave-to {
-  transform: translateX(-80px);
+
+.slide-enter-from {
+  transform: translateX(50%);
   opacity: 0;
 }
 </style>

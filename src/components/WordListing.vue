@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type Word from '@/types/word'
+import type DataTableHeader from '@/types/dataTableHeader'
 import { useWordStore } from '@/stores/word'
 
 defineProps<{ words: Word[] }>()
@@ -8,7 +9,7 @@ defineProps<{ words: Word[] }>()
 const store = useWordStore()
 
 let itemsPerPage = ref(100)
-const headers = [
+const headers: DataTableHeader[] = [
   { title: 'Word', key: 'origin' },
   { title: 'Translation', key: 'translation' },
   { title: 'Proficiency', key: 'proficiency' },
@@ -30,29 +31,26 @@ function getProgressColor(proficiency: number) {
 </script>
 
 <template>
-  <!-- eslint-disable-next-line vuetify/no-deprecated-components -->
   <v-data-table
     v-model:items-per-page="itemsPerPage"
     :headers="headers"
     :items="words"
   >
-    <!-- eslint-disable-next-line vue/valid-v-slot -->
     <template #item.proficiency="{ item }">
       <v-progress-linear
-        :model-value="item.raw.proficiency"
-        :color="getProgressColor(item.raw.proficiency)"
+        :model-value="item.proficiency"
+        :color="getProgressColor(item.proficiency)"
         height="8"
         rounded
       />
     </template>
 
-    <!-- eslint-disable-next-line vue/valid-v-slot -->
     <template #item.actions="{ item }">
       <v-icon
         class="action"
         size="small"
         icon="mdi-trash-can-outline"
-        @click="store.deleteWord(item.raw.id)"
+        @click="store.deleteWord(item.id)"
       />
     </template>
   </v-data-table>

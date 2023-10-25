@@ -25,7 +25,7 @@ export const useWordStore = defineStore('word', () => {
       wordsForList
         .value(listId)
         .sort((a, b) => b.proficiency - a.proficiency)
-        .slice(-5)
+        .slice(-3)
   })
 
   const wordsCount = computed(() => {
