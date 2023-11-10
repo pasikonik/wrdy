@@ -8,8 +8,8 @@ The application for consolidate newly discovered words. The vocabulary will be m
 
 |                                                                                                                                                                              | Tech       | Version |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------- |
-| <img height="25" src="https://user-images.githubusercontent.com/25181517/117448124-a2da9800-af3e-11eb-85d2-bd1b69b65603.png" alt="Vue.js" title="Vue.js" />                  | Vue        | 3.3.6   |
-| <img height="25" src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" title="Node.js" />                | Node       | 18.18.0 |
+| <img height="25" src="https://user-images.githubusercontent.com/25181517/117448124-a2da9800-af3e-11eb-85d2-bd1b69b65603.png" alt="Vue.js" title="Vue.js" />                  | Vue        | 3.3.8   |
+| <img height="25" src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" title="Node.js" />                | Node       | 20.9.0  |
 | <img height="25" src="https://d33wubrfki0l68.cloudfront.net/2f3acb83b7d2349f2194bc38c0f22f295908dc33/43f95/img/pnpm-no-name-with-frame.svg" alt="Node.js" title="Node.js" /> | Pnpm       | 8.9.0   |
 | <img height="25" src="https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png" alt="TypeScript" title="TypeScript" />          | TypeScript | 5.2.2   |
 
@@ -21,8 +21,8 @@ The application for consolidate newly discovered words. The vocabulary will be m
   - [x] Add the ability to import words from a CSV file
   - [x] Implement a view for memorizing words
 - [ ] PHASE 2 - _Rough diamond_
-  - [ ] Add the ability to sort words by column in the word view
-  - [ ] Implement a basic statistics view
+  - [x] Add the ability to sort words by column in the word view
+  - [x] Implement a basic statistics view
   - [ ] Increase test coverage to ensure software reliability
   - [ ] Allow users to reorder lists using drag & drop functionality
 - [ ] PHASE 3 - _Polishing_
